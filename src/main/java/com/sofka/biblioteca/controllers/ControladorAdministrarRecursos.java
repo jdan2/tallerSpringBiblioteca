@@ -8,10 +8,7 @@ import com.sofka.biblioteca.services.ServicioRecursos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/administrar")
@@ -29,9 +26,18 @@ public class ControladorAdministrarRecursos {
         return new ResponseEntity(respuesta, HttpStatus.OK);
     }
 
-    @GetMapping("/prestar/{id}")
-    public ResponseEntity<RespuestaDTO> prestarRecurso(@PathVariable("id") String id) {
+    @PutMapping("/prestar/{id}")
+    public ResponseEntity<RespuestaDTO> prestarRecurso(@PathVariable String id) {
         var respuesta = servicioAdministrarRecursos.pretarRecurso(id);
+        if(respuesta == null){
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        }
+        return new ResponseEntity(respuesta, HttpStatus.OK);
+    }
+
+    @PutMapping("/devolver/{id}")
+    public ResponseEntity<RespuestaDTO> devolverRecurso(@PathVariable String id) {
+        var respuesta = servicioAdministrarRecursos.devolverRecurso(id);
         if(respuesta == null){
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }

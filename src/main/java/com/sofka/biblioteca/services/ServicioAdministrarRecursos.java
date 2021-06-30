@@ -51,7 +51,28 @@ public class ServicioAdministrarRecursos {
         }
         respuestaDTO.setfechaPrestamo(recurso.get().getFechaPrestamo());
         respuestaDTO.setDisponible(false);
-        respuestaDTO.setMensaje("El recurso " + recurso.get().getNombreRecurso() + " se encuentra en prestamo git ");
+        respuestaDTO.setMensaje("El recurso " + recurso.get().getNombreRecurso() + " se encuentra en prestamo ");
+        return respuestaDTO;
+    }
+
+    public RespuestaDTO devolverRecurso(String idRecurso){
+        RespuestaDTO respuestaDTO = new RespuestaDTO();
+        var recurso = repositorioRecursos.findById(idRecurso);
+        if(recurso.get().getDisponible()){
+            recurso.get().setDisponible(true);
+            recurso.get().setFechaPrestamo(null);
+            repositorioRecursos.save(recurso.get());
+            respuestaDTO.setfechaPrestamo(recurso.get().getFechaPrestamo());
+            respuestaDTO.setDisponible(true);
+            respuestaDTO.setMensaje("El recurso " + recurso.get().getNombreRecurso() + " no esta en prestamo");
+            return respuestaDTO;
+        }
+        recurso.get().setDisponible(true);
+        recurso.get().setFechaPrestamo(null);
+        repositorioRecursos.save(recurso.get());
+        respuestaDTO.setfechaPrestamo(recurso.get().getFechaPrestamo());
+        respuestaDTO.setDisponible(true);
+        respuestaDTO.setMensaje("El recurso " + recurso.get().getNombreRecurso() + " ha sido devuelto exitosamente ");
         return respuestaDTO;
     }
 
