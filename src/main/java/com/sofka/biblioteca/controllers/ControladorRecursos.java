@@ -1,5 +1,6 @@
 package com.sofka.biblioteca.controllers;
 
+import com.sofka.biblioteca.dto.AreaTematicaDTO;
 import com.sofka.biblioteca.dto.RecursosDTO;
 import com.sofka.biblioteca.services.ServicioRecursos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class ControladorRecursos {
     public ResponseEntity<RecursosDTO> create(@RequestBody RecursosDTO recursosDTO) {
         return new ResponseEntity(servicioRecursos.crear(recursosDTO), HttpStatus.CREATED);
     }
+
+    @PostMapping("/creararea")
+    public ResponseEntity<AreaTematicaDTO> createarea(@RequestBody AreaTematicaDTO areaTematicaDTO) {
+        return new ResponseEntity(servicioRecursos.crearArea(areaTematicaDTO), HttpStatus.CREATED);
+    }
+
     @PutMapping("/modificar")
     public ResponseEntity<RecursosDTO> update(@RequestBody RecursosDTO recursosDTO){
         if (recursosDTO.getId() != null){

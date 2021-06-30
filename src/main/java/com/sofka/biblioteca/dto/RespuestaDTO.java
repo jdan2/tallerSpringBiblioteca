@@ -9,6 +9,9 @@ public class RespuestaDTO {
     private boolean disponible;
     private String fechaPrestamo;
 
+    public RespuestaDTO() {
+    }
+
     public String getMensaje() {
         return mensaje;
     }

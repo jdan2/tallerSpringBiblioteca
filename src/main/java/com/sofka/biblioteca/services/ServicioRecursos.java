@@ -1,8 +1,12 @@
 package com.sofka.biblioteca.services;
 
+import com.sofka.biblioteca.dto.AreaTematicaDTO;
 import com.sofka.biblioteca.dto.RecursosDTO;
+import com.sofka.biblioteca.mappers.AreaTematicaMapper;
 import com.sofka.biblioteca.mappers.RecursosMapper;
+import com.sofka.biblioteca.models.AreaTematica;
 import com.sofka.biblioteca.models.Recursos;
+import com.sofka.biblioteca.repositories.RepositorioAreaTematica;
 import com.sofka.biblioteca.repositories.RepositorioRecursos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +18,12 @@ public class ServicioRecursos {
 
     @Autowired
     RepositorioRecursos repositorioRecursos;
+    @Autowired
+    RepositorioAreaTematica repositorioAreaTematica;
+
     RecursosMapper mapper = new RecursosMapper();
+    AreaTematicaMapper areaTematicaMapper = new AreaTematicaMapper();
+
 
     public List<RecursosDTO> obtenerTodos() {
         List<Recursos> recursos = (List<Recursos>) repositorioRecursos.findAll();
@@ -28,6 +37,12 @@ public class ServicioRecursos {
         Recursos recurso = mapper.fromDTO(recursoDTO);
         return mapper.fromCollection(repositorioRecursos.save(recurso));
     }
+
+    public AreaTematicaDTO crearArea(AreaTematicaDTO areaTematicaDTO) {
+        AreaTematica areaTematica = areaTematicaMapper.fromDTO(areaTematicaDTO);
+        return areaTematicaMapper.fromCollection(repositorioAreaTematica.save(areaTematica));
+    }
+
     public RecursosDTO modificar(RecursosDTO empleadoDTO) {
         Recursos recursos = mapper.fromDTO(empleadoDTO);
         repositorioRecursos.findById(recursos.getId()).orElseThrow(() -> new RuntimeException("Recurso no encontrado"));
