@@ -34,7 +34,7 @@ class ServicioRecursosTest {
         recurso1.setId("1111");
         recurso1.setNombreRecurso("La Biblia");
         recurso1.setTipoRecurso("Libro");
-        recurso1.setAreaTematica("Religion");
+        recurso1.setIdArea("Religion");
         recurso1.setFechaPrestamo("02: 32: 07 AM 30-Jun-AM");
         recurso1.setDisponible(true);
 
@@ -42,7 +42,7 @@ class ServicioRecursosTest {
         var recurso2 = new RecursosDTO();
         recurso2.setNombreRecurso("La Biblia");
         recurso2.setTipoRecurso("Libro");
-        recurso2.setAreaTematica("Religion");
+        recurso2.setIdArea("Religion");
         recurso2.setFechaPrestamo("02: 32: 07 AM 30-Jun-AM");
         recurso2.setDisponible(true);
 
@@ -54,7 +54,7 @@ class ServicioRecursosTest {
 
         Assertions.assertEquals(recurso1.getNombreRecurso(), resultado.getNombreRecurso(), "El nombre de recurso no corresponde");
         Assertions.assertEquals(recurso1.getTipoRecurso(), resultado.getTipoRecurso(), "El Tipo Recurso no corresponde");
-        Assertions.assertEquals(recurso1.getAreaTematica(), resultado.getAreaTematica(), "El area tematica no corresponde");
+        Assertions.assertEquals(recurso1.getIdArea(), resultado.getIdArea(), "El area tematica no corresponde");
         Assertions.assertEquals(recurso1.getFechaPrestamo(), resultado.getFechaPrestamo(), "La fecha de prestamo no corresponde");
         Assertions.assertEquals(recurso1.getDisponible(), resultado.getDisponible(), "La disponibilidad no corresponde");
     }
@@ -66,14 +66,14 @@ class ServicioRecursosTest {
         recurso1.setId("1111");
         recurso1.setNombreRecurso("La Biblia");
         recurso1.setTipoRecurso("Libro");
-        recurso1.setAreaTematica("Religion");
+        recurso1.setIdArea("Religion");
         recurso1.setFechaPrestamo("02: 32: 07 AM 30-Jun-AM");
         recurso1.setDisponible(true);
         var recurso2 = new Recursos();
         recurso2.setId("2222");
         recurso2.setNombreRecurso("La Biblia RNV");
         recurso2.setTipoRecurso("Libro");
-        recurso2.setAreaTematica("Religion");
+        recurso2.setIdArea("Religion");
         recurso2.setFechaPrestamo("02: 32: 07 AM 28-Jun-AM");
         recurso2.setDisponible(false);
 
@@ -88,14 +88,14 @@ class ServicioRecursosTest {
         Assertions.assertEquals(recurso1.getId(), resultado.get(0).getId());
         Assertions.assertEquals(recurso1.getNombreRecurso(), resultado.get(0).getNombreRecurso());
         Assertions.assertEquals(recurso1.getTipoRecurso(), resultado.get(0).getTipoRecurso());
-        Assertions.assertEquals(recurso1.getAreaTematica(), resultado.get(0).getAreaTematica());
+        Assertions.assertEquals(recurso1.getIdArea(), resultado.get(0).getIdArea());
         Assertions.assertEquals(recurso1.getFechaPrestamo(), resultado.get(0).getFechaPrestamo());
         Assertions.assertEquals(recurso1.getDisponible(), resultado.get(0).getDisponible());
 
         Assertions.assertEquals(recurso2.getId(), resultado.get(1).getId());
         Assertions.assertEquals(recurso2.getNombreRecurso(), resultado.get(1).getNombreRecurso());
         Assertions.assertEquals(recurso2.getTipoRecurso(), resultado.get(1).getTipoRecurso());
-        Assertions.assertEquals(recurso2.getAreaTematica(), resultado.get(1).getAreaTematica());
+        Assertions.assertEquals(recurso2.getIdArea(), resultado.get(1).getIdArea());
         Assertions.assertEquals(recurso2.getFechaPrestamo(), resultado.get(1).getFechaPrestamo());
         Assertions.assertEquals(recurso2.getDisponible(), resultado.get(1).getDisponible());
     }
@@ -108,14 +108,14 @@ class ServicioRecursosTest {
         recurso1.setId("1111");
         recurso1.setNombreRecurso("La Biblia");
         recurso1.setTipoRecurso("Libro");
-        recurso1.setAreaTematica("Religion");
+        recurso1.setIdArea("Religion");
         recurso1.setFechaPrestamo("02: 32: 07 AM 30-Jun-AM");
         recurso1.setDisponible(true);
         var recurso2 = new Recursos();
         recurso2.setId("2222");
         recurso2.setNombreRecurso("La Biblia RNV");
         recurso2.setTipoRecurso("Libro");
-        recurso2.setAreaTematica("Religion");
+        recurso2.setIdArea("Religion");
         recurso2.setFechaPrestamo("02: 32: 07 AM 28-Jun-AM");
         recurso2.setDisponible(false);
 

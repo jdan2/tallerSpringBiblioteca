@@ -10,7 +10,7 @@ public class RecursosDTO {
     private Boolean disponible;
     private String tipoRecurso;
     private String fechaPrestamo;
-    private String areaTematica;
+    private String idArea;
 
     public RecursosDTO() {
     }
@@ -47,12 +47,12 @@ public class RecursosDTO {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public String getAreaTematica() {
-        return areaTematica;
+    public String getIdArea() {
+        return idArea;
     }
 
-    public void setAreaTematica(String areaTematica) {
-        this.areaTematica = areaTematica;
+    public void setIdArea(String idArea) {
+        this.idArea = idArea;
     }
 
     public String getNombreRecurso() {

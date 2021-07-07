@@ -2,6 +2,7 @@ package com.sofka.biblioteca.controllers;
 
 
 import com.sofka.biblioteca.dto.RecursosDTO;
+import com.sofka.biblioteca.dto.RespuestaAreaTematicaDTO;
 import com.sofka.biblioteca.dto.RespuestaDTO;
 import com.sofka.biblioteca.services.ServicioAdministrarRecursos;
 import com.sofka.biblioteca.services.ServicioRecursos;
@@ -42,5 +43,14 @@ public class ControladorAdministrarRecursos {
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
         return new ResponseEntity(respuesta, HttpStatus.OK);
+    }
+
+    @GetMapping("/recomendar/{id}")
+    public ResponseEntity<RespuestaAreaTematicaDTO> recomendar(@PathVariable("id") String id){
+        var repuesta = servicioAdministrarRecursos.recomendar(id);
+        if(repuesta.getRecursosArea().size() == 0){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(repuesta, HttpStatus.OK);
     }
 }

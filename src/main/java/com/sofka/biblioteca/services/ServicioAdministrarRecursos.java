@@ -1,8 +1,10 @@
 package com.sofka.biblioteca.services;
 
 import com.sofka.biblioteca.dto.RecursosDTO;
+import com.sofka.biblioteca.dto.RespuestaAreaTematicaDTO;
 import com.sofka.biblioteca.dto.RespuestaDTO;
 import com.sofka.biblioteca.mappers.RecursosMapper;
+import com.sofka.biblioteca.repositories.RepositorioAreaTematica;
 import com.sofka.biblioteca.repositories.RepositorioRecursos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import java.util.Date;
 public class ServicioAdministrarRecursos {
     @Autowired
     RepositorioRecursos repositorioRecursos;
+    @Autowired
+    RepositorioAreaTematica repositorioAreaTematica;
     RecursosMapper mapper = new RecursosMapper();
 
     private Date fechaActual = new Date();
@@ -74,6 +78,15 @@ public class ServicioAdministrarRecursos {
         respuestaDTO.setDisponible(true);
         respuestaDTO.setMensaje("El recurso " + recurso.get().getNombreRecurso() + " ha sido devuelto exitosamente ");
         return respuestaDTO;
+    }
+
+    public RespuestaAreaTematicaDTO recomendar(String idArea) {
+        RespuestaAreaTematicaDTO respuestaAreaTematica = new RespuestaAreaTematicaDTO();
+        var area = repositorioAreaTematica.findById(idArea).get();
+        var list = repositorioRecursos.findRecursosByidArea(idArea);
+        respuestaAreaTematica.setRecursosArea(mapper.fromCollectionList(list));
+        respuestaAreaTematica.setAreaTematica(area.getNombreArea());
+        return respuestaAreaTematica;
     }
 
 }

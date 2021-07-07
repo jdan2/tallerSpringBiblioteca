@@ -43,8 +43,8 @@ public class ServicioRecursos {
         return areaTematicaMapper.fromCollection(repositorioAreaTematica.save(areaTematica));
     }
 
-    public RecursosDTO modificar(RecursosDTO empleadoDTO) {
-        Recursos recursos = mapper.fromDTO(empleadoDTO);
+    public RecursosDTO modificar(RecursosDTO recursosDTO) {
+        Recursos recursos = mapper.fromDTO(recursosDTO);
         repositorioRecursos.findById(recursos.getId()).orElseThrow(() -> new RuntimeException("Recurso no encontrado"));
         return mapper.fromCollection(repositorioRecursos.save(recursos));
     }

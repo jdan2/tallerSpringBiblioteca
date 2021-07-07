@@ -13,7 +13,7 @@ public class RecursosMapper {
         Recursos recursos = new Recursos();
         recursos.setId(dto.getId());
         recursos.setNombreRecurso(dto.getNombreRecurso());
-        recursos.setAreaTematica(dto.getAreaTematica());
+        recursos.setIdArea(dto.getIdArea());
         recursos.setDisponible(dto.getDisponible());
         recursos.setTipoRecurso(dto.getTipoRecurso());
         recursos.setFechaPrestamo(dto.getFechaPrestamo());
@@ -23,7 +23,7 @@ public class RecursosMapper {
     public RecursosDTO fromCollection(Recursos recursos){
         RecursosDTO recursosDTO = new RecursosDTO();
         recursosDTO.setId(recursos.getId());
-        recursosDTO.setAreaTematica(recursos.getAreaTematica());
+        recursosDTO.setIdArea(recursos.getIdArea());
         recursosDTO.setNombreRecurso(recursos.getNombreRecurso());
         recursosDTO.setTipoRecurso(recursos.getTipoRecurso());
         recursosDTO.setDisponible(recursos.getDisponible());
